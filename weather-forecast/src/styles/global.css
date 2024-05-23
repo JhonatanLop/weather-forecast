@@ -3,24 +3,18 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  #map {
-    width: 100%;
-    height: 400px;
-  }
-  
-  input {
+}
+
+input {
     padding: 0.5em;
     margin-right: 0.5em;
-  }
-  
-  button {
+}
+
+button {
     padding: 0.5em;
-  }
-  
-  select {
+}
+
+select {
     padding: 0.5em;
     margin-top: 1em;
-  }
-  
+}

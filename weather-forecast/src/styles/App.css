@@ -2,14 +2,35 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 4vw;
+    height: 100%;
     align-items: center;
+    gap: 1vw;
     /* justify-content: center; */
     /* background-color: ; */
 }
 
+.map{
+    height: 100%;
+    width: 100%;
+}
+
+.header input{
+    width: 15vw;
+    height: 3vh;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+.header input:focus {
+    border-bottom: 1px solid #999;
+    border: none;
+}
+
 .title{
-    font-size: 22px;
+    margin: 10px 20px 10px 20px;
+    font-size: 28px;
 }
 .main{
     display: flex;
