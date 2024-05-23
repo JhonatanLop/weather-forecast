@@ -16,7 +16,7 @@ interface WeatherInfoProps {
 }
 
 const WeatherInfo: React.FC<WeatherInfoProps> = ({ weather }) => {
-  if (!weather) return <div>No weather data available</div>;
+  if (!weather) return null;
 
   return (
     <div>
@@ -25,9 +25,11 @@ const WeatherInfo: React.FC<WeatherInfoProps> = ({ weather }) => {
       <p>Temperature: {weather.temp}°C</p>
       <p>Max Temperature: {weather.tempMax}°C</p>
       <p>Min Temperature: {weather.tempMin}°C</p>
-      <p>Weather: {weather.description} <img src={weather.icon} alt={weather.description} /></p>
-      <p>Rain Probability: {weather.rainProbability}%</p>
-      <p>Moon Phase: {weather.moonPhase} <img src={weather.moonIcon} alt={weather.moonPhase} /></p>
+      <p>Description: {weather.description}</p>
+      <img src={`http://openweathermap.org/img/wn/${weather.icon}.png`} alt={weather.description} />
+      <p>Rain Probability: {weather.rainProbability * 100}%</p>
+      <p>Moon Phase: {weather.moonPhase}</p>
+      <img src={weather.moonIcon} alt={weather.moonPhase} />
     </div>
   );
 };
