@@ -20,7 +20,7 @@ const WeatherInfo: React.FC<WeatherInfoProps> = ({ weather }) => {
   if (!weather) return null;
 
   return (
-    <div>
+    <div className="weather-info">
       <header className="weather-header">
         <h2>{weather.city}</h2>
       </header>
