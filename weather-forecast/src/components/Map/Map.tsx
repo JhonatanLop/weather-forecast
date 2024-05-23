@@ -1,26 +1,34 @@
-import React, { useEffect } from 'react';
-import 'ol/ol.css';
-import { Map as OlMap, View } from 'ol';
+import React, { useEffect, useRef } from 'react';
+import OlMap from 'ol/Map';
+import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
+import 'ol/ol.css';
 
 const Map: React.FC = () => {
+  const mapRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    new OlMap({
-      target: 'map',
-      layers: [
-        new TileLayer({
-          source: new OSM(),
+    if (mapRef.current) {
+      const map = new OlMap({
+        target: mapRef.current,
+        layers: [
+          new TileLayer({
+            source: new OSM(),
+          }),
+        ],
+        view: new View({
+          center: [0, 0], // Coordenadas iniciais [lon, lat]
+          zoom: 2, // Nível de zoom inicial
         }),
-      ],
-      view: new View({
-        center: [0, 0],
-        zoom: 2,
-      }),
-    });
+      });
+
+      // Limpeza para evitar múltiplas instâncias do mapa
+      return () => map.setTarget(undefined);
+    }
   }, []);
 
-  return <div id="map" style={{ width: '100%', height: '400px' }}></div>;
+  return <div id="map" ref={mapRef} style={{ width: '100%', height: '400px' }} />;
 };
 
 export default Map;
