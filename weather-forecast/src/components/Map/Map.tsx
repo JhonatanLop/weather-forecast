@@ -1,34 +1,50 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import OlMap from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
-import 'ol/ol.css';
+import { fromLonLat } from 'ol/proj';
 
-const Map: React.FC = () => {
-  const mapRef = useRef<HTMLDivElement>(null);
+interface MapProps {
+    lat: number;
+    lon: number;
+    zoom: number
+}
 
-  useEffect(() => {
-    if (mapRef.current) {
-      const map = new OlMap({
-        target: mapRef.current,
-        layers: [
-          new TileLayer({
-            source: new OSM(),
-          }),
-        ],
-        view: new View({
-          center: [0, 0], // Coordenadas iniciais [lon, lat]
-          zoom: 2, // Nível de zoom inicial
-        }),
-      });
+const Map: React.FC<MapProps> = ({ lat, lon, zoom }) => {
+    const mapRef = useRef<HTMLDivElement>(null);
+    const mapInstance = useRef<OlMap | null>(null);
 
-      // Limpeza para evitar múltiplas instâncias do mapa
-      return () => map.setTarget(undefined);
-    }
-  }, []);
+    useEffect(() => {
+        if (mapRef.current) {
+            mapInstance.current = new OlMap({
+                target: mapRef.current,
+                layers: [
+                    new TileLayer({
+                        source: new OSM(),
+                    }),
+                ],
+                view: new View({
+                    center: fromLonLat([lon, lat]),
+                    zoom: zoom,
+                }),
+            });
 
-  return <div id="map" ref={mapRef} style={{ width: '100%', height: '400px' }} />;
+            return () => {
+                mapInstance.current?.setTarget(undefined);
+            };
+        }
+    }, []);
+
+    useEffect(() => {
+        if (mapInstance.current) {
+            const view = mapInstance.current.getView();
+            view.setCenter(fromLonLat([lon, lat]));
+            view.setZoom(zoom);
+        }
+    }, [lat, lon, zoom]);
+
+    return <div id="map" ref={mapRef} style={{ width: '100%', height: '100vh' }} />;
 };
 
 export default Map;

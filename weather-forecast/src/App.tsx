@@ -7,14 +7,10 @@ import { getWeather, getCityCoordinates } from './services/api';
 import 'ol/ol.css';  // Importa os estilos básicos do OpenLayers
 import './styles/App.css'
 
-import OlMap from 'ol/Map';
-import View from 'ol/View';
-import TileLayer from 'ol/layer/Tile';
-import OSM from 'ol/source/OSM';
-
 const App: React.FC = () => {
     const [weather, setWeather] = useState<any>(null);
     const [savedCities, setSavedCities] = useState<string[]>([]);
+    const [mapPosition, setMapPosition] = useState({ lat: 0, lon: 0, zoom: 2 });
 
     const handleSearch = async (city: string) => {
         try {
@@ -38,19 +34,8 @@ const App: React.FC = () => {
                 setSavedCities([...savedCities, cityData.name]);
             }
 
-            // Move the map to the city's coordinates
-            const map = new OlMap({
-                target: 'map',
-                layers: [
-                    new TileLayer({
-                        source: new OSM(),
-                    }),
-                ],
-                view: new View({
-                    center: [cityData.lon, cityData.lat],
-                    zoom: 10,
-                }),
-            });
+            // Update the map position
+            setMapPosition({ lat: cityData.lat, lon: cityData.lon, zoom: 10 });
         } catch (error) {
             console.error('Error fetching weather data', error);
         }
@@ -59,15 +44,15 @@ const App: React.FC = () => {
     return (
         <main className="main">
             <header className="header">
-               <div>
-                 <h1 className="title">Weather Forecast</h1>
-               </div>
+                <div>
+                    <h1 className="title">Weather Forecast</h1>
+                </div>
                 <CitySearch onSearch={handleSearch} />
                 <WeatherInfo weather={weather} />
                 <SavedCities cities={savedCities} onSelectCity={handleSearch} />
             </header>
             <article className="map">
-                <Map />
+                <Map lat={mapPosition.lat} lon={mapPosition.lon} zoom={mapPosition.zoom} />
             </article>
         </main>
     );
