@@ -11,11 +11,12 @@ Este projeto é uma aplicação web de previsão meteorológica que permite aos 
 
 ## Tecnologias Utilizadas
 
-- TypeScript
-- React
-- OpenLayers: Para o mapa.
-- OpenWeather Geocoding API: Para obter as coordenadas geográficas das cidades.
-- OpenWeather Current weather data: Para obter os dados climáticos.
+- [Vite](https://vitejs.dev/)
+- [Typescript](https://www.typescriptlang.org/download/)
+- [React](https://react.dev/)
+- [OpenLayers](https://openlayers.org/): Para o mapa.
+- [OpenWeather Geocoding API](https://openweathermap.org/api/geocoding-api): Para obter as coordenadas geográficas das cidades.
+- [OpenWeather Current weather data](https://openweathermap.org/current): Para obter os dados climáticos.
 > As APIs utilizadas para esse projeto são gratúitas e infelizmente não possuem dados relacionados às fases da lua ou uma previsão de até 3 dias do clima da região selecionada como foi solicitado
 
 ## Estrutura do projeto
@@ -55,7 +56,7 @@ weather-forecast/
 ├── README.md
 ```
 
-## Instalação e Uso
+## Instalação
 ### Pré-requisitos
 
 - Node.js
@@ -72,6 +73,7 @@ cd weather-forecast/weather-forecast/
 2. Instale as dependências:
 ```bash
 npm install
+yarn
 ```
 
 3. Configure suas chaves de API:
@@ -88,6 +90,7 @@ const WEATHER_API_KEY = "YOUR_API_KEY";
 4. Inicie a aplicação:
 ```bash
 npm run dev
+yarn dev
 ```
 
 A aplicação estará disponível em [http://localhost:3000](http://localhost:3000).
@@ -105,9 +108,43 @@ npm i cypress --save-dev
 ```bash
 npx cypress run
 ```
-Esse comando irá rodar os testes e gerar um relatório pelo terminal.
+Esse comando irá rodar os testes e exibir um relatório pelo terminal.
 
+<details>
+  <summary> Usando interface do Cypress </summary>
 
+1. Abrir o cypress
+
+```bash
+npx cypress open
+```
+Este comando irá abrir o cypress, onde executara os testes em tempo real com uma interface para visualização do processo
+
+2. Fazer login
+
+![cypress_home](https://github.com/JhonatanLop/weather-forecast/assets/111443621/da473959-b512-4cfe-8361-f6c26ee25f6f)
+
+3. Escolha o tipo de teste
+
+![tipo_teste](https://github.com/JhonatanLop/weather-forecast/assets/111443621/a09050a6-aabe-4115-94fc-5bae43c271f9)
+
+Para esse projeto usaremos a opção E2E
+
+4. Escolha do ambiente a ser executado
+
+![escolha_ambiente](https://github.com/JhonatanLop/weather-forecast/assets/111443621/c25d11df-26f1-496e-9818-9bd54201a5a9)
+
+No meu caso eu acabei usando o firefox pois é o navegador que eu possuo
+
+5. Escolha o teste
+
+![escolha_test](https://github.com/JhonatanLop/weather-forecast/assets/111443621/1c99bc62-f7ab-44b6-aade-b546f7669407)
+
+Ao escolher o teste, o cypress comecará os testes
+
+ ![test](https://github.com/JhonatanLop/weather-forecast/assets/111443621/ee4f116d-7981-4fa9-90ba-aaa5af506f58)
+
+</details>
 
 ## Documentação das APIs
 
