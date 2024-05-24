@@ -6,7 +6,7 @@ import SavedCities from './components/SavedCities/SavedCities';
 import Popup from './components/Popup/Popup';
 import { getWeather, getCityCoordinates } from './services/api';
 import 'ol/ol.css';
-import './styles/App.css'
+import './styles/app.css'
 
 const App: React.FC = () => {
     const [weather, setWeather] = useState<any>(null);
