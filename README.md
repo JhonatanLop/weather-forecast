@@ -61,7 +61,7 @@ weather-forecast/
 1. Clone o repositório:
 ```bash
 git clone https://github.com/JhontanLop/weather-forecast.git
-cd weather-forecast
+cd weather-forecast/weather-forecast/
 ```
 
 2. Instale as dependências:
@@ -85,4 +85,5 @@ A aplicação estará disponível em [http://localhost:3000](http://localhost:30
 ## Documentação das APIs
 
 OpenWeather Geocoding API: [Documentação](https://openweathermap.org/api/geocoding-api)
+
 OpenWeather Current weather data: [Documentação](https://openweathermap.org/current)
