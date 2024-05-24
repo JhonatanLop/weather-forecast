@@ -13,6 +13,7 @@ const App: React.FC = () => {
     const [savedCities, setSavedCities] = useState<string[]>([]);
     const [mapPosition, setMapPosition] = useState({ lat: 0, lon: 0, zoom: 2 });
     const [isPopupVisible, setIsPopupVisible] = useState(false);
+    const [isWeatherVisible, setIsWeatherVisible] = useState(true);
     const [popupContent, setPopupContent] = useState({ header: '', content: '' });
 
     // Função para buscar a previsão do tempo de uma cidade
@@ -30,7 +31,7 @@ const App: React.FC = () => {
 
             // Atualiza o estado do componente com os dados do clima
             setWeather({
-                city: cityData.name,
+                city: cityData.local_names.pt,
                 date: new Date(weatherData.dt * 1000).toLocaleDateString(),
                 temp: weatherData.main.temp,
                 tempMax: weatherData.main.temp_max,
@@ -44,6 +45,11 @@ const App: React.FC = () => {
                 setSavedCities([...savedCities, cityData.name]);
             }
 
+            // atualiza visibilidade do clima caso esteja false
+            if (!isWeatherVisible){
+                setIsWeatherVisible(true);
+            }
+
             // Atualiza a posição do mapa
             setMapPosition({ lat: cityData.lat, lon: cityData.lon, zoom: 11 });
         } catch (error) {
@@ -53,6 +59,10 @@ const App: React.FC = () => {
 
     const handleClosePopup = () => {
         setIsPopupVisible(false);
+    };
+
+    const handleCloseWeather = () => {
+        setIsWeatherVisible(false);
     };
 
     // função de reenderização do popup
@@ -71,10 +81,13 @@ const App: React.FC = () => {
     // função de reenderização do clima
     function renderWeatherInfo() {
         if (!weather) return null;
+        if (!isWeatherVisible) return null;
 
         return (
             <div className="weather-popup">
-                <WeatherInfo weather={weather} />
+                <WeatherInfo 
+                    weather={weather}
+                    onClose={handleCloseWeather} />
             </div>
         );
     }

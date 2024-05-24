@@ -11,44 +11,32 @@ interface WeatherInfoProps {
         description: string;
         icon: string;
     } | null;
+    onClose: () => void;
 }
 
-const WeatherInfo: React.FC<WeatherInfoProps> = ({ weather }) => {
+const WeatherInfo: React.FC<WeatherInfoProps> = ({ weather, onClose}) => {
     if (!weather) return null;
-
-    // descrições possíveis
-    const weatherDescriptions: { [key: string]: string } = {
-        'clear sky': 'Céu limpo',
-        'few clouds': 'Poucas nuvens',
-        'scattered clouds': 'Nuvens dispersas',
-        'broken clouds': 'Nuvens quebradas',
-        'shower rain': 'Aguaceiro',
-        'rain': 'Chuva',
-        'thunderstorm': 'Tempestade',
-        'snow': 'Neve',
-        'mist': 'Névoa'
-      };
 
       // convertendo dados para o padrão brasileiro
     const convertedData = {
         date: new Date(weather.date).toLocaleDateString('pt-BR'),
         temp: (weather.temp - 273.15).toFixed(2),
         tempMax: (weather.tempMax - 273.15).toFixed(2),
-        tempMin: (weather.tempMin - 273.15).toFixed(2),
-        description: weatherDescriptions[weather.description] || weather.description,
+        tempMin: (weather.tempMin - 273.15).toFixed(2)
     };
 
     return (
         <div className="weather-info">
             <header className="weather-header">
                 <h2>{weather.city}</h2>
+                <button onClick={onClose} className="close-button">&times;</button>
             </header>
             <main className="weather-content">
                 <p>Data: {convertedData.date}</p>
                 <p>Temperatura: {convertedData.temp}°C</p>
                 <p>Temp Max: {convertedData.tempMax}°C</p>
                 <p>Temp Min: {convertedData.tempMin}°C</p>
-                <p>Descrição: {convertedData.description}</p>
+                <p>Descrição: {weather.description}</p>
                 <img src={`http://openweathermap.org/img/wn/${weather.icon}.png`} alt={weather.description} />
             </main>
         </div>
