@@ -101,8 +101,8 @@ const App: React.FC = () => {
         <main className="main">
             <header className="header">
                 <h1 className="title">Weather Forecast</h1>
-                <CitySearch onSearch={handleSearch} />
-                <SavedCities cities={savedCities} onSelectCity={handleSearch} />
+                <CitySearch onSearch={handleSearch}/>
+                <SavedCities cities={savedCities} onSelectCity={handleSearch}/>
             </header>
             {renderPopup()}
             {renderWeatherInfo()}

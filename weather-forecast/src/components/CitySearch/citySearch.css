@@ -8,18 +8,20 @@ input {
     border-bottom: 1px solid #ccc;
     margin-right: 10px;
     font-size:22px;
-    
+    transition: border-bottom 0.3s ease;
 }
 
 input:focus {
     border-bottom: 1px solid #999;
-    border: none;
+    outline:none;
 }
 
 .search{
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-left: 1vw;
+    margin-right: 1vw;
 }
 
 .search-button{
@@ -27,9 +29,10 @@ input:focus {
     font-weight: 400;
     display: flex;
     background: none;
+    border:none;
+    transition: background-color 0.3s ease;
 }
 
-.search-icon{
-    height:18px;
-    width:18px;
+.search-button:hover{
+    background-color: rgb(65, 65, 65);
 }
