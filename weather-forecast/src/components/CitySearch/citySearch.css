@@ -1,4 +1,6 @@
 input {
+    font-family: "Inter";
+    font-weight: 200;
     width: 20vw;
     height: 28px;
     background: none;
@@ -21,6 +23,8 @@ input:focus {
 }
 
 .search-button{
+    font-family: "Inter";
+    font-weight: 400;
     display: flex;
     background: none;
 }

@@ -42,3 +42,8 @@
     height: 50px;
     width: 50px;
 }
+
+.close-button{
+    top:0;
+    right:0;
+}

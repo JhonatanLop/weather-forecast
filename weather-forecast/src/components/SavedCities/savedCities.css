@@ -8,3 +8,19 @@
     border: none;
     border-bottom: 1px solid #ccc;
 }
+
+.placeholder{
+    font-family: "Inter";
+    font-weight: 200;
+    /* color: #363636 */
+    color: rgba(255, 255, 255, 0.5);
+    font-color: #fff;
+    height: 32px;
+    width: 20vw;
+    background: none;
+
+    font-size: 22px;
+
+    border: none;
+    border-bottom: 1px solid #ccc;
+}

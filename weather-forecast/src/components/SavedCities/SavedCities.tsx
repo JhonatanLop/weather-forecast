@@ -11,7 +11,7 @@ const SavedCities: React.FC<SavedCitiesProps> = ({ cities, onSelectCity }) => {
     if (cities.length === 0) {
         return (
             <div>
-                <select onChange={(e) => onSelectCity(e.target.value)} className="select-list">
+                <select onChange={(e) => onSelectCity(e.target.value)} className="placeholder">
                     <option value="" >Histórico de busca</option>
                 </select>
             </div>
