@@ -10,9 +10,6 @@ interface WeatherInfoProps {
     tempMin: number;
     description: string;
     icon: string;
-    rainProbability: number;
-    moonPhase: string;
-    moonIcon: string;
   } | null;
 }
 
@@ -31,9 +28,6 @@ const WeatherInfo: React.FC<WeatherInfoProps> = ({ weather }) => {
         <p>Min Temperature: {weather.tempMin}°C</p>
         <p>Description: {weather.description}</p>
         <img src={`http://openweathermap.org/img/wn/${weather.icon}.png`} alt={weather.description} />
-        <p>Rain Probability: {weather.rainProbability * 100}%</p>
-        <p>Moon Phase: {weather.moonPhase}</p>
-        <img src={weather.moonIcon} alt={weather.moonPhase} />
       </main>
     </div>
   );

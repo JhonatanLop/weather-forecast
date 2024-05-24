@@ -19,15 +19,12 @@ const App: React.FC = () => {
 
             setWeather({
                 city: cityData.name,
-                date: new Date(weatherData.current.dt * 1000).toLocaleDateString(),
-                temp: weatherData.current.temp,
-                tempMax: weatherData.daily[0].temp.max,
-                tempMin: weatherData.daily[0].temp.min,
-                description: weatherData.current.weather[0].description,
-                icon: weatherData.current.weather[0].icon,
-                rainProbability: weatherData.daily[0].pop,
-                moonPhase: weatherData.daily[0].moon_phase,
-                moonIcon: weatherData.daily[0].moon_icon, // Note: You'll need to map the moon phase to an icon
+                date: new Date(weatherData.dt * 1000).toLocaleDateString(),
+                temp: weatherData.main.temp,
+                tempMax: weatherData.main.temp.max,
+                tempMin: weatherData.main.temp.min,
+                description: weatherData.weather[0].description,
+                icon: weatherData.weather[0].icon
             });
 
             if (!savedCities.includes(cityData.name)) {
