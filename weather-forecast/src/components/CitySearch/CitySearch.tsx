@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './citySearch.css'
+import searchIcon from '../../assets/search_icon.svg'
 
 interface CitySearchProps {
   onSearch: (city: string) => void;
@@ -21,7 +22,7 @@ const CitySearch: React.FC<CitySearchProps> = ({ onSearch }) => {
         onChange={(e) => setCity(e.target.value)}
         placeholder="Nome da cidade"
       />
-      <button onClick={handleSearch} className="search-button">Pesquisar</button>
+      <button onClick={handleSearch} className="search-button"> <img src={searchIcon} alt="Pesquisar" /> </button>
     </div>
   );
 };

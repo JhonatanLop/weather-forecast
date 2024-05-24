@@ -27,11 +27,15 @@ input:focus {
 
 .search-button{
     font-family: "Inter";
+    height: 6vh;
+    width: 6vh;
     font-weight: 400;
     display: flex;
     background: none;
     border:none;
+    border-radius: 100%;
     transition: background-color 0.3s ease;
+    padding:0;
 }
 
 .search-button:hover{
