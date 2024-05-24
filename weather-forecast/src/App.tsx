@@ -12,14 +12,16 @@ const App: React.FC = () => {
     const [weather, setWeather] = useState<any>(null);
     const [savedCities, setSavedCities] = useState<string[]>([]);
     const [mapPosition, setMapPosition] = useState({ lat: 0, lon: 0, zoom: 2 });
+    const [isPopupVisible, setIsPopupVisible] = useState(false);
+    const [popupContent, setPopupContent] = useState({ header: '', content: '' });
 
     const handleSearch = async (city: string) => {
         try {
             const cityData = await getCityCoordinates(city);
             if (cityData === undefined) {
-                return(
-                alert('City not found')
-                );
+                setPopupContent({ header:'Algo aconteceu...', content:'Não foi possível encontrar a cidade informada.' });
+                setIsPopupVisible(true);
+                return;
             }
             const weatherData = await getWeather(cityData.lat, cityData.lon);
 
@@ -27,8 +29,8 @@ const App: React.FC = () => {
                 city: weatherData.name,
                 date: new Date(weatherData.dt * 1000).toLocaleDateString(),
                 temp: weatherData.main.temp,
-                tempMax: weatherData.main.temp.max,
-                tempMin: weatherData.main.temp.min,
+                tempMax: weatherData.main.temp_max,
+                tempMin: weatherData.main.temp_min,
                 description: weatherData.weather[0].description,
                 icon: weatherData.weather[0].icon
             });
@@ -38,10 +40,14 @@ const App: React.FC = () => {
             }
 
             // Update the map position
-            setMapPosition({ lat: cityData.lat, lon: cityData.lon, zoom: 10 });
+            setMapPosition({ lat: cityData.lat, lon: cityData.lon, zoom: 11 });
         } catch (error) {
             console.error('Error fetching weather data', error);
         }
+    };
+
+    const handleClosePopup = () => {
+        setIsPopupVisible(false);
     };
 
     return (
@@ -53,6 +59,13 @@ const App: React.FC = () => {
                 <CitySearch onSearch={handleSearch} />
                 <SavedCities cities={savedCities} onSelectCity={handleSearch} />
             </header>
+            {isPopupVisible && (
+                <Popup
+                    header={popupContent.header}
+                    content={popupContent.content}
+                    onClose={handleClosePopup}
+                />
+            )}
             {weather && (
                 <div className="weather-popup">
                     <WeatherInfo weather={weather} />
