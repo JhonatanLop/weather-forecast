@@ -2,9 +2,7 @@
     height: 32px;
     width: 20vw;
     background: none;
-
     font-size: 22px;
-
     border: none;
     border-bottom: 1px solid #ccc;
 }
@@ -24,3 +22,8 @@
     border: none;
     border-bottom: 1px solid #ccc;
 }
+
+select {
+    padding-left: 12px;
+}
+

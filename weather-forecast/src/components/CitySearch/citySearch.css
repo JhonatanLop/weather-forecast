@@ -6,6 +6,7 @@ input {
     background: none;
     border: none;
     border-bottom: 1px solid #ccc;
+    padding-left:12px;
     margin-right: 10px;
     font-size:22px;
     transition: border-bottom 0.3s ease;

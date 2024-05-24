@@ -28,8 +28,8 @@ const WeatherInfo: React.FC<WeatherInfoProps> = ({ weather, onClose}) => {
     return (
         <div className="weather-info">
             <header className="weather-header">
-                <h2>{weather.city}</h2>
                 <button onClick={onClose} className="close-button">&times;</button>
+                <h2>{weather.city}</h2>
             </header>
             <main className="weather-content">
                 <p>Data: {convertedData.date}</p>

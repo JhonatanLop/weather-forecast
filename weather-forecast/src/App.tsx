@@ -7,6 +7,7 @@ import Popup from './components/Popup/Popup';
 import { getWeather, getCityCoordinates } from './services/api';
 import 'ol/ol.css';
 import './styles/app.css'
+import weatherIcon from './assets/weather_2.svg';
 
 const App: React.FC = () => {
     const [weather, setWeather] = useState<any>(null);
@@ -30,9 +31,9 @@ const App: React.FC = () => {
             const weatherData = await getWeather(cityData.lat, cityData.lon);
 
             // pegando somente os nomes das cidades em português
-            let cityNamePtBr:string;
-            if (cityData.local_names === undefined) {cityNamePtBr = cityData.name;}
-            else {cityNamePtBr = cityData.local_names.pt;}
+            let cityNamePtBr: string;
+            if (cityData.local_names === undefined) { cityNamePtBr = cityData.name; }
+            else { cityNamePtBr = cityData.local_names.pt; }
 
             // Atualiza o estado do componente com os dados do clima
             setWeather({
@@ -51,7 +52,7 @@ const App: React.FC = () => {
             }
 
             // atualiza visibilidade do clima caso esteja false
-            if (!isWeatherVisible){
+            if (!isWeatherVisible) {
                 setIsWeatherVisible(true);
             }
 
@@ -90,7 +91,7 @@ const App: React.FC = () => {
 
         return (
             <div className="weather-popup">
-                <WeatherInfo 
+                <WeatherInfo
                     weather={weather}
                     onClose={handleCloseWeather} />
             </div>
@@ -100,9 +101,15 @@ const App: React.FC = () => {
     return (
         <main className="main">
             <header className="header">
-                <h1 className="title">Weather Forecast</h1>
-                <CitySearch onSearch={handleSearch}/>
-                <SavedCities cities={savedCities} onSelectCity={handleSearch}/>
+                <div className="conteiner">
+                    <h1 className="title">Weather Forecast
+                        <img src={weatherIcon} alt="Weather icon" />
+                    </h1>
+                    <CitySearch onSearch={handleSearch} />
+                </div>
+                <div className="history">
+                    <SavedCities cities={savedCities} onSelectCity={handleSearch} />
+                </div>
             </header>
             {renderPopup()}
             {renderWeatherInfo()}

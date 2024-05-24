@@ -2,17 +2,35 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 56px;
+    max-width: 100vw;
+    height: 62px;
+    justify-content: space-between;
     align-items: center;
     gap: 1vw;
     background-color: #242424;
 }
 
 .title {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+
     font-family: "Inter";
     font-weight: 200;
+    
     margin: 10px 20px 10px 20px;
     font-size: 42px;
+}
+
+.history{
+    height: 100%;
+    widith: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1vw;
+    margin: 0 20px 0 20px;
+
 }
 
 .map {
@@ -22,8 +40,8 @@
 
 .conteiner {
     display: flex;
-    flex-direction: column;
-    width: 80vw;
+    flex-direction: row;
+    align-items: center;
 }
 
 .weather-popup {

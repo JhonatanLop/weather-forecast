@@ -10,24 +10,20 @@ interface SavedCitiesProps {
 const SavedCities: React.FC<SavedCitiesProps> = ({ cities, onSelectCity }) => {
     if (cities.length === 0) {
         return (
-            <div>
-                <select onChange={(e) => onSelectCity(e.target.value)} className="placeholder">
-                    <option value="" >Histórico de busca</option>
-                </select>
-            </div>
+            <select onChange={(e) => onSelectCity(e.target.value)} className="placeholder">
+                <option value="" >Histórico de busca</option>
+            </select>
         );
     }
 
     return (
-        <div>
-            <select onChange={(e) => onSelectCity(e.target.value)} className="select-list">
-                {cities.map((city, index) => (
-                    <option key={index} value={city}>
-                        {city}
-                    </option>
-                ))}
-            </select>
-        </div>
+        <select onChange={(e) => onSelectCity(e.target.value)} className="select-list">
+            {cities.map((city, index) => (
+                <option key={index} value={city}>
+                    {city}
+                </option>
+            ))}
+        </select>
     );
 };
 
