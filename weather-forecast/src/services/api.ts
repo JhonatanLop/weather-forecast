@@ -8,6 +8,6 @@ export const getWeather = async (lat: number, lon: number) => {
 };
 
 export const getCityCoordinates = async (city: string) => {
-  const response = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${WEATHER_API_KEY}`);
+  const response = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${WEATHER_API_KEY}`);
   return response.data[0];
 };
