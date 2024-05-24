@@ -3,6 +3,7 @@ import Map from './components/Map/Map';
 import CitySearch from './components/CitySearch/CitySearch';
 import WeatherInfo from './components/WeatherInfo/WeatherInfo';
 import SavedCities from './components/SavedCities/SavedCities';
+import Popup from './components/Popup/Popup';
 import { getWeather, getCityCoordinates } from './services/api';
 import 'ol/ol.css';  // Importa os estilos básicos do OpenLayers
 import './styles/App.css'
@@ -15,10 +16,15 @@ const App: React.FC = () => {
     const handleSearch = async (city: string) => {
         try {
             const cityData = await getCityCoordinates(city);
+            if (cityData === undefined) {
+                return(
+                alert('City not found')
+                );
+            }
             const weatherData = await getWeather(cityData.lat, cityData.lon);
 
             setWeather({
-                city: cityData.name,
+                city: weatherData.name,
                 date: new Date(weatherData.dt * 1000).toLocaleDateString(),
                 temp: weatherData.main.temp,
                 tempMax: weatherData.main.temp.max,
@@ -45,9 +51,13 @@ const App: React.FC = () => {
                     <h1 className="title">Weather Forecast</h1>
                 </div>
                 <CitySearch onSearch={handleSearch} />
-                <WeatherInfo weather={weather} />
                 <SavedCities cities={savedCities} onSelectCity={handleSearch} />
             </header>
+            {weather && (
+                <div className="weather-popup">
+                    <WeatherInfo weather={weather} />
+                </div>
+            )}
             <article className="map">
                 <Map lat={mapPosition.lat} lon={mapPosition.lon} zoom={mapPosition.zoom} />
             </article>
