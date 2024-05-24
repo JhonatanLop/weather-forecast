@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './citySearch.css'
 
 interface CitySearchProps {
   onSearch: (city: string) => void;
@@ -13,14 +14,14 @@ const CitySearch: React.FC<CitySearchProps> = ({ onSearch }) => {
   };
 
   return (
-    <div>
+    <div className="search">
       <input
         type="text"
         value={city}
         onChange={(e) => setCity(e.target.value)}
-        placeholder="Enter city name"
+        placeholder="Nome da cidade"
       />
-      <button onClick={handleSearch}>Search</button>
+      <button onClick={handleSearch} className="search-button">Pesquisar</button>
     </div>
   );
 };

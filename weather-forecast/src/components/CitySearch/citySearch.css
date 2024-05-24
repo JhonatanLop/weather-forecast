@@ -1,0 +1,31 @@
+input {
+    width: 20vw;
+    height: 28px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    margin-right: 10px;
+    font-size:22px;
+    
+}
+
+input:focus {
+    border-bottom: 1px solid #999;
+    border: none;
+}
+
+.search{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.search-button{
+    display: flex;
+    background: none;
+}
+
+.search-icon{
+    height:18px;
+    width:18px;
+}
