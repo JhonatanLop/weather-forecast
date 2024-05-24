@@ -16,6 +16,7 @@ interface WeatherInfoProps {
 const WeatherInfo: React.FC<WeatherInfoProps> = ({ weather }) => {
     if (!weather) return null;
 
+    // descrições possíveis
     const weatherDescriptions: { [key: string]: string } = {
         'clear sky': 'Céu limpo',
         'few clouds': 'Poucas nuvens',
@@ -28,6 +29,7 @@ const WeatherInfo: React.FC<WeatherInfoProps> = ({ weather }) => {
         'mist': 'Névoa'
       };
 
+      // convertendo dados para o padrão brasileiro
     const convertedData = {
         date: new Date(weather.date).toLocaleDateString('pt-BR'),
         temp: (weather.temp - 273.15).toFixed(2),
