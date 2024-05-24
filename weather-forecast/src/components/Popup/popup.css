@@ -12,7 +12,7 @@
 }
 
 .popup-content {
-    background-color: #fff;
+    background-color: #1e1e1e;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
@@ -39,4 +39,12 @@
 
 .popup-main {
     margin-top: 20px;
+}
+
+.close-popup {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    transition: background-color 0.3s ease;
 }

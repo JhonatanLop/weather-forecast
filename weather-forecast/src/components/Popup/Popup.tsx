@@ -13,7 +13,7 @@ const Popup: React.FC<PopupProps> = ({ header, content, onClose }) => {
             <div className="popup-content">
                 <header className="popup-header">
                     <h2>{header}</h2>
-                    <button onClick={onClose} className="close-button">&times;</button>
+                    <button onClick={onClose} className="close-popup">&times;</button>
                 </header>
                 <main className="popup-main">
                     <p>{content}</p>
