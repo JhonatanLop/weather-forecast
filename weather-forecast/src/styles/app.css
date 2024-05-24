@@ -44,14 +44,14 @@
 
 .weather-popup {
     position: fixed;
-    top: 100px;
+    top: 10%;
     right: 20px;
     width: 300px;
     padding: 1rem;
-    background-color: white;
-    border: 1px solid #ddd;
+    background-color: #242424;
+    border: 1px solid #272727;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+    border-radius: 10px;
     z-index: 1000;
 }
 
