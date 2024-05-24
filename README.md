@@ -6,7 +6,7 @@ Este projeto é uma aplicação web de previsão meteorológica que permite aos 
 
 - Pesquisa de Cidade: Os usuários podem pesquisar por uma cidade e obter informações detalhadas sobre o clima atual.
 - Mapa Interativo: O mapa exibe a localização da cidade pesquisada e atualiza dinamicamente conforme novas pesquisas são realizadas.
-- Informações do Clima: Mostra a temperatura atual, temperatura máxima e mínima, tipo do clima, probabilidade de chuva, fase da lua e ícones correspondentes.
+- Informações do Clima: Mostra a temperatura atual, temperatura máxima e mínima, tipo do clima e ícones correspondentes.
 - Cidades Salvas: Os usuários podem acessar rapidamente as cidades pesquisadas anteriormente através de um menu de seleção.
 
 ## Tecnologias Utilizadas
@@ -27,7 +27,6 @@ cypress
 │   ├── TestandoApp.cy.js
 │
 weather-forecast/
-│
 ├── public/
 │   ├── index.html
 │
