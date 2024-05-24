@@ -29,9 +29,14 @@ const App: React.FC = () => {
             // caso a cidade exista, os dados do clima são salvos na constante weatherData
             const weatherData = await getWeather(cityData.lat, cityData.lon);
 
+            let cityNamePtBr:string;
+            if (cityData.local_names === undefined) {cityNamePtBr = cityData.name;}
+            else {cityNamePtBr = cityData.local_names.pt;}
+
+
             // Atualiza o estado do componente com os dados do clima
             setWeather({
-                city: cityData.local_names.pt,
+                city: cityNamePtBr,
                 date: new Date(weatherData.dt * 1000).toLocaleDateString(),
                 temp: weatherData.main.temp,
                 tempMax: weatherData.main.temp_max,
