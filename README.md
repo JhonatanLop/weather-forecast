@@ -172,5 +172,78 @@ Ao escolher o teste, o cypress comecará os testes
 <h2 id="nerd-thing"> Documentação técnica </h2>
 
 OpenWeather Geocoding API: [Documentação](https://openweathermap.org/api/geocoding-api)
-
 OpenWeather Current weather data: [Documentação](https://openweathermap.org/current)
+OpenLayer [documentation](https://openlayers.org/doc/)
+
+### Fluxo dos dados da aplicação
+
+1. Obtendo os dados.
+
+Ao pesquisar o nome de uma cidade, usa-se o end-point:
+```typescript
+export const getCityCoordinates = async (city: string) => {
+const response = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${WEATHER_API_KEY}`);
+return response.data[0];
+};
+```
+Esse endpoint retorna a latitude e longitude da cidade junto com outras informações como estado e país.
+A latitude e longitude será usado na reenderização do mapa e em outro endpoint, este que retorna os dados do clima
+```typescript arquivo api.ts
+export const getWeather = async (lat: number, lon: number) => {
+  const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&lang=pt_br`);
+  return response.data;
+};
+```
+função que atualiza a posição do mapa
+```tsx
+setMapPosition({ lat: cityData.lat, lon: cityData.lon, zoom: 11 });
+```
+
+2. Convertendo os dados
+
+estes dados vem no padrão americano, com exceção da descrição do clima. Sendo assim é necessário fazer a conversão de Fahrenheit para Celsius e alterar a data para o padrão brasileiro.
+```tsx
+// weather é o objeto retornado do endpoint
+const convertedData = {
+    date: new Date(weather.date).toLocaleDateString('pt-BR'),
+    temp: (weather.temp - 273.15).toFixed(2),
+    tempMax: (weather.tempMax - 273.15).toFixed(2),
+    tempMin: (weather.tempMin - 273.15).toFixed(2)
+};
+```
+Depois dessa conversão o commponente é exportado como html
+```html
+<div className="weather-info">
+    <header className="weather-header">
+        <button onClick={onClose} className="close-button">&times;</button>
+        <h2>{weather.city}</h2>
+    </header>
+    <main className="weather-content">
+        <p>Data: {convertedData.date}</p>
+        <p>Temperatura: {convertedData.temp}°C</p>
+        <p>Temp Max: {convertedData.tempMax}°C</p>
+        <p>Temp Min: {convertedData.tempMin}°C</p>
+        <p>Descrição: {weather.description}</p>
+        <img src={`http://openweathermap.org/img/wn/${weather.icon}.png`} alt={weather.description} />
+    </main>
+</div>
+```
+3. Reenderizando os dados
+
+Exportado como html, agora é possível chamálo na aplicação, mas para controle do usuário caso ele não queira mais ver essa informação é necessário haver um meio de esconder isso.
+```typescript
+function renderWeatherInfo() {
+    if (!weather) return null; // se não houver dados, retornar null
+    if (!isWeatherVisible) return null; // se isWeatherVisible for false, retornar null
+
+    // montando componente
+    return (
+        <div className= "weather-popup" >
+            <WeatherInfo 
+            weather={ weather }
+            onClose = { handleCloseWeather } />
+        </div>
+    );
+}
+```
+Com isso o usuário consegue fechar o popup com os dados do clima e continuar pesquisando. Quando uma outra cidade for pesquisada, o componente voltará a aparecer com os novos dados.
