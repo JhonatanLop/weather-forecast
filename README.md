@@ -171,9 +171,9 @@ Ao escolher o teste, o cypress comecará os testes
 
 <h2 id="nerd-thing"> Documentação técnica </h2>
 
-OpenWeather Geocoding API: [Documentação](https://openweathermap.org/api/geocoding-api)
-OpenWeather Current weather data: [Documentação](https://openweathermap.org/current)
-OpenLayer [documentation](https://openlayers.org/doc/)
+OpenWeather Geocoding API: [Documentação](https://openweathermap.org/api/geocoding-api)<br>
+OpenWeather Current weather data: [Documentação](https://openweathermap.org/current))<br>
+OpenLayer [documentation](https://openlayers.org/doc/))<br>
 
 ### Fluxo dos dados da aplicação
 
