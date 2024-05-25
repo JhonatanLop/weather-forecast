@@ -3,10 +3,10 @@
 Este projeto é uma aplicação web de previsão meteorológica que permite aos usuários consultar as previsões do tempo para qualquer cidade utilizando um mapa de apoio. A aplicação foi desenvolvida utilizando TypeScript e a biblioteca OpenLayers para o mapa.
 
 <ul><a href="#o-projeto"> Sobre o projeto </a></ul>
-        <ul><a href="install"> Instalação </a></ul>
-        <ul><a href="how-to-use"> Como usar </a></ul>
-        <ul><a href="application-breaker"> Testes </a></ul>
-        <ul><a href="nerd-thing"> Documentação Técnica </a></ul>
+<ul><a href="#install"> Instalação </a></ul>
+<ul><a href="#how-to-use"> Como usar </a></ul>
+<ul><a href="#application-breaker"> Testes </a></ul>
+<ul><a href="#nerd-thing"> Documentação Técnica </a></ul>
 
 <h2 id="o-projeto"> Funcionalidades </h2>
 
