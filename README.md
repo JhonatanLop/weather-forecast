@@ -2,7 +2,13 @@
 
 Este projeto é uma aplicação web de previsão meteorológica que permite aos usuários consultar as previsões do tempo para qualquer cidade utilizando um mapa de apoio. A aplicação foi desenvolvida utilizando TypeScript e a biblioteca OpenLayers para o mapa.
 
-## Funcionalidades
+<ul><a href="#o-projeto"> Sobre o projeto </a></ul>
+        <ul><a href="install"> Instalação </a></ul>
+        <ul><a href="how-to-use"> Como usar </a></ul>
+        <ul><a href="application-breaker"> Testes </a></ul>
+        <ul><a href="nerd-thing"> Documentação Técnica </a></ul>
+
+<h2 id="o-projeto"> Funcionalidades </h2>
 
 - Pesquisa de Cidade: Os usuários podem pesquisar por uma cidade e obter informações detalhadas sobre o clima atual.
 - Mapa Interativo: O mapa exibe a localização da cidade pesquisada e atualiza dinamicamente conforme novas pesquisas são realizadas.
@@ -55,7 +61,7 @@ weather-forecast/
 ├── README.md
 ```
 
-## Instalação
+<h2 id="install"> Instalação </h2>
 ### Pré-requisitos
 
 - Node.js
@@ -78,8 +84,9 @@ yarn
 3. Configure suas chaves de API:
 
 Para conseguir uma api key acesse o site da [openWeather](https://openweathermap.org/) e crie uma conta se não tiver.
-
 Depois vá para a parte de [API keys](https://home.openweathermap.org/api_keys) onde estarão listadas todas as suas chaves.
+
+![openWeatherpage](https://github.com/JhonatanLop/weather-forecast/assets/111443621/f00f9371-0cc5-4859-98c1-3d98aa5b5471)
 
 No arquivo `api.ts` coloque a sua chave de acesso
 ```typescript
@@ -94,7 +101,24 @@ yarn dev
 
 A aplicação estará disponível em [http://localhost:3000](http://localhost:3000).
 
-### Testes automatizados
+<h2 id="how-to-use"></h2>
+
+Tela inicial
+
+![tela_inicial](https://github.com/JhonatanLop/weather-forecast/assets/111443621/acdf50d9-cd16-45c7-b786-fafcfd821aa1)
+
+<p>O sistema faz o uso da API externa a partir do campo de pesquisa com input do tipo string e um botão ao lado para fazer a chamada da função.<br>
+Pesquisando pelo nome de uma cidade o primeiro endpoint será usado. Este recebe como parâmetro o nome de uma cidade e retorna algumas informações como latitude e longitude<br>
+Esses dados são usados em outro endpoint que retorna os dados do clima naquela regial.
+Se a consulta for bem sucedida, o mapa será movido em direção à cidade e as informaçãos sserão reenderizadas na tela e a cidade pesquisada vai para a lista no canto superior da página.</p>
+
+![pesquisa](https://github.com/JhonatanLop/weather-forecast/assets/111443621/4417dfdb-d6cb-4c2e-b711-6bb73a60e52f)
+
+Caso pesquise por uma cidade e a mesma não é encontrada haverá um popup de aviso.
+
+![pesquisa_sem_retorno](https://github.com/JhonatanLop/weather-forecast/assets/111443621/971ad844-060f-4ee5-a3bc-6cf3d70c9c53)
+
+<h2 id="application-breaker"> Testes automatizados </h2>
 
 Para executar os testes automatizados
 
@@ -145,7 +169,7 @@ Ao escolher o teste, o cypress comecará os testes
 
 </details>
 
-## Documentação das APIs
+<h2 id="nerd-thing"> Documentação técnica </h2>
 
 OpenWeather Geocoding API: [Documentação](https://openweathermap.org/api/geocoding-api)
 
