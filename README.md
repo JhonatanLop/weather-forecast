@@ -101,7 +101,7 @@ yarn dev
 
 A aplicação estará disponível em [http://localhost:3000](http://localhost:3000).
 
-<h2 id="how-to-use"></h2>
+<h2 id="how-to-use"> Como usar </h2>
 
 Tela inicial
 
